@@ -94,7 +94,7 @@ main{
     margin: 20px;
 }
 
-.card-01{
+.card{
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 1fr auto auto;
@@ -106,7 +106,7 @@ main{
     text-align: center;
 }
 
-.card-01 h2{
+.card h2{
     grid-row: 1;
     font-size: 26px;
     color: var(--heading-font);
@@ -202,7 +202,7 @@ main{
     text-align: left;
 }
 
-.card-01, .card-02{
+.card, .card-02{
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
