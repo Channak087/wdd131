@@ -6,13 +6,13 @@
         font-size: 1.5rem;
     }
 
-    .navigation {
+    .nav {
         justify-content: flex-end;
         flex-direction: row;
 
     }
 
-    .navigation a {
+    .nav a {
         display: block;
         padding: 1rem;
         flex: 1 1 100%;
