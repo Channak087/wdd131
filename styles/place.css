@@ -1,24 +1,26 @@
-/* AUDIT FIX: CSS Variables are required */
+/* 1. CSS Variables (Required for Audit) */
 :root {
     --primary-color: #ce1126;   /* Cambodia Red */
     --secondary-color: #2E8B57; /* SeaGreen */
-    --text-color: #333;
-    --bg-color: #f0f0f0;
-    --font-family: 'Roboto', sans-serif;
+    --accent-color: #ffffff;    /* White */
+    --text-color: #333333;      /* Dark Gray */
+    --bg-color: #f0f0f0;        /* Light Gray Background */
+    --heading-font: 'Roboto', sans-serif;
+    --paragraph-font: 'Roboto', sans-serif;
 }
 
-/* General Reset */
+/* 2. General Reset & Body */
 body {
-    font-family: var(--font-family);
+    font-family: var(--paragraph-font);
     margin: 0;
     padding: 0;
     background-color: var(--bg-color);
 }
 
-/* Header & Footer */
+/* 3. Header & Footer */
 header, footer {
     background-color: var(--primary-color);
-    color: white;
+    color: var(--accent-color);
     text-align: center;
     padding: 1rem;
 }
@@ -26,20 +28,25 @@ header, footer {
 header h1 {
     margin: 0;
     font-size: 2.5rem;
+    font-family: var(--heading-font);
 }
 
-/* Hero Section */
+footer p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+/* 4. Hero Section (The Container) */
 .hero {
-    position: relative;
+    position: relative; /* CRITICAL: Allows cards to float on top */
     width: 100%;
-    max-height: 600px; 
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* Max-width keeps it from getting too wide on huge monitors */
+    max-width: 1200px; 
+    margin: 0 auto;
 }
 
-/* AUDIT FIX: Style the picture tag to fill space */
+/* 5. Responsive Image Handling */
+/* This styles the new <picture> tag so it behaves like the old <img> */
 .hero picture {
     width: 100%;
     height: auto;
@@ -49,102 +56,92 @@ header h1 {
 .hero-img {
     width: 100%;
     height: auto;
-    object-fit: cover;
+    object-fit: cover; /* Ensures image covers area without stretching */
     display: block;
-    min-height: 400px;
+    min-height: 400px; /* Keeps enough space for cards */
 }
 
-/* Card Styling */
+/* 6. Card Styling (The Floating Boxes) */
 .card {
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.85);
+    position: absolute; /* Floating logic for Desktop */
+    background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent */
     border: 1px solid #ccc;
-    width: 280px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* Positioning */
+/* Position Data Card (Left) */
 .data-card {
-    top: 50px;
-    left: 50px;
+    top: 30px;
+    left: 30px;
 }
 
+/* Position Weather Card (Right) */
 .weather-card {
     top: 150px;
-    right: 50px;
+    right: 30px;
 }
 
-.weather-icon {
-    width: 24px;
-    height: 24px;
-    vertical-align: middle;
-    margin-left: 10px;
-}
-
-/* Ensure picture tag fills the space */
-.hero picture {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Card Header */
+/* Card Header (Green Box) */
 .card-header {
     background-color: var(--secondary-color);
-    color: white;
-    padding: 10px;
-    text-align: left;
+    color: var(--accent-color);
+    padding: 10px 15px;
 }
 
-/* AUDIT FIX: Targeted h2 instead of h3 */
+/* Fix for H2 inside Header */
 .card-header h2 {
     margin: 0;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Pushes text left, icon right */
     align-items: center;
 }
 
-/* SVG Icon Sizing */
+/* SVG Icon Styling */
 .weather-icon {
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
+    fill: var(--accent-color); /* Makes the SVG white */
 }
 
-/* Card Content */
+/* Card Content (Text) */
 .card-content {
     padding: 15px;
-    text-align: right;
+    color: var(--text-color);
     font-size: 0.95rem;
     line-height: 1.6;
 }
 
+/* Flexbox for neat rows (Label ..... Value) */
+.card-content p {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
 .card-content strong {
-    color: var(--text-color);
-    float: left;
+    font-weight: bold;
 }
 
-/* Footer Content */
-footer p {
-    margin: 5px 0;
-    font-size: 0.9rem;
-}
-
-/* Mobile Responsiveness */
+/* 7. Mobile Responsiveness */
 @media (max-width: 700px) {
     .hero {
+        display: flex;
         flex-direction: column;
-        height: auto;
-        max-height: none;
+    }
+
+    /* Hide the big banner image on small phones if preferred, 
+       OR keep it. Usually, we let it stay or stack. */
+    picture {
+        display: block;
     }
     
-    .hero picture, .hero-img {
-        display: none; /* Hides image on mobile */
-    }
-    
+    /* Disable floating for mobile - Stack them instead */
     .card {
-        position: static;
+        position: static; 
         width: 90%;
-        margin: 20px auto;
+        margin: 1rem auto; /* Centers the cards */
     }
 }
