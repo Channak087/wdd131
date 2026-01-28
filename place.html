@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phnom Penh - WDD131</title>
-    <meta name="description" content="WDD131 Assignment - Phnom Penh Weather and Data will help you know more about Cambodia. ">
-    <meta name="author" content="Your Name">
+    <meta name="description" content="WDD131 Assignment - Phnom Penh Weather and Data.">
+    <meta name="author" content="Kong Channak">
     <link rel="stylesheet" href="styles/place.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="scripts/place.js" defer></script>
 </head>
 <body>
@@ -20,7 +20,10 @@
 
     <main>
         <div class="hero">
-            <img src="images/phnom-penh.webp" alt="Phnom Penh City Scenery" class="hero-img" loading="lazy">
+            <picture>
+                <source srcset="images/phnom-penh.webp" type="image/webp">
+                <img src="images/phnom-penh.webp" alt="Phnom Penh City Scenery" class="hero-img" loading="lazy">
+            </picture>
             
             <section class="card data-card">
                 <div class="card-header">
@@ -38,13 +41,13 @@
                 </div>
             </section>
 
-            <div class="card weather-card">
+            <section class="card weather-card">
                 <div class="card-header">
-                    <h3>Weather
+                    <h2>Weather 
                         <svg class="weather-icon" width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
                             <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4C9.11 4 6.6 5.64 5.35 8.04C2.34 8.36 0 10.91 0 14C0 17.31 2.69 20 6 20H19C21.76 20 24 17.76 24 15C24 12.36 21.95 10.22 19.35 10.04Z"/>
                         </svg>
-                    </h3>
+                    </h2>
                 </div>
                 <div class="card-content">
                     <p><strong>Temperature:</strong> <span id="temperature">10</span>&deg;C</p>
@@ -52,7 +55,7 @@
                     <p><strong>Wind:</strong> <span id="windspeed">8</span> km/h</p>
                     <p><strong>Wind Chill:</strong> <span id="windchill"></span></p>
                 </div>
-            </div>
+            </section>
         </div>
     </main>
 

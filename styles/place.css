@@ -74,6 +74,20 @@ header h1 {
     right: 50px;
 }
 
+.weather-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+/* Ensure picture tag fills the space */
+.hero picture {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* Card Header */
 .card-header {
     background-color: var(--secondary-color);
