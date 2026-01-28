@@ -1,17 +1,16 @@
-/* 1. CSS Variables (Required for Audit) */
+/* 1. CSS Variables */
 :root {
     --primary-color: #ce1126;   /* Cambodia Red */
     --secondary-color: #2E8B57; /* SeaGreen */
-    --accent-color: #ffffff;    /* White */
-    --text-color: #333333;      /* Dark Gray */
-    --bg-color: #f0f0f0;        /* Light Gray Background */
-    --heading-font: 'Roboto', sans-serif;
-    --paragraph-font: 'Roboto', sans-serif;
+    --accent-color: #ffffff;
+    --text-color: #333333;
+    --bg-color: #f0f0f0;
+    --font-family: 'Roboto', sans-serif;
 }
 
-/* 2. General Reset & Body */
+/* 2. General Reset */
 body {
-    font-family: var(--paragraph-font);
+    font-family: var(--font-family);
     margin: 0;
     padding: 0;
     background-color: var(--bg-color);
@@ -28,7 +27,19 @@ header, footer {
 header h1 {
     margin: 0;
     font-size: 2.5rem;
-    font-family: var(--heading-font);
+    position: relative;
+    display: inline-block;
+}
+
+/* AUDIT FIX: ::after pseudo-element is required */
+header h1::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent-color);
+    margin: 5px auto 0;
+    border-radius: 2px;
 }
 
 footer p {
@@ -36,17 +47,15 @@ footer p {
     font-size: 0.9rem;
 }
 
-/* 4. Hero Section (The Container) */
+/* 4. Hero Section */
 .hero {
-    position: relative; /* CRITICAL: Allows cards to float on top */
+    position: relative;
     width: 100%;
-    /* Max-width keeps it from getting too wide on huge monitors */
     max-width: 1200px; 
     margin: 0 auto;
 }
 
-/* 5. Responsive Image Handling */
-/* This styles the new <picture> tag so it behaves like the old <img> */
+/* AUDIT FIX: Consolidated Rule for Picture */
 .hero picture {
     width: 100%;
     height: auto;
@@ -56,56 +65,53 @@ footer p {
 .hero-img {
     width: 100%;
     height: auto;
-    object-fit: cover; /* Ensures image covers area without stretching */
+    object-fit: cover;
     display: block;
-    min-height: 400px; /* Keeps enough space for cards */
+    min-height: 400px;
 }
 
-/* 6. Card Styling (The Floating Boxes) */
+/* 5. Card Styling */
 .card {
-    position: absolute; /* Floating logic for Desktop */
-    background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent */
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.85);
     border: 1px solid #ccc;
     width: 300px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* Position Data Card (Left) */
 .data-card {
-    top: 30px;
-    left: 30px;
+    top: 50px;
+    left: 50px;
 }
 
-/* Position Weather Card (Right) */
 .weather-card {
     top: 150px;
-    right: 30px;
+    right: 50px;
 }
 
-/* Card Header (Green Box) */
+/* 6. Card Header */
 .card-header {
     background-color: var(--secondary-color);
     color: var(--accent-color);
     padding: 10px 15px;
 }
 
-/* Fix for H2 inside Header */
 .card-header h2 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     display: flex;
-    justify-content: space-between; /* Pushes text left, icon right */
+    justify-content: space-between;
     align-items: center;
 }
 
-/* SVG Icon Styling */
+/* AUDIT FIX: Consolidated Rule for Icon */
 .weather-icon {
-    width: 30px;
-    height: 30px;
-    fill: var(--accent-color); /* Makes the SVG white */
+    width: 24px;
+    height: 24px;
+    fill: var(--accent-color);
 }
 
-/* Card Content (Text) */
+/* 7. Card Content */
 .card-content {
     padding: 15px;
     color: var(--text-color);
@@ -113,35 +119,33 @@ footer p {
     line-height: 1.6;
 }
 
-/* Flexbox for neat rows (Label ..... Value) */
+/* LAYOUT FIX: Ensures Label is Left, Value is Right */
 .card-content p {
     display: flex;
     justify-content: space-between;
     margin: 8px 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .card-content strong {
     font-weight: bold;
+    color: var(--text-color);
 }
 
-/* 7. Mobile Responsiveness */
+/* 8. Mobile Responsiveness */
 @media (max-width: 700px) {
     .hero {
         display: flex;
         flex-direction: column;
     }
-
-    /* Hide the big banner image on small phones if preferred, 
-       OR keep it. Usually, we let it stay or stack. */
-    picture {
+    
+    .hero picture {
         display: block;
     }
     
-    /* Disable floating for mobile - Stack them instead */
     .card {
-        position: static; 
+        position: static;
         width: 90%;
-        margin: 1rem auto; /* Centers the cards */
+        margin: 20px auto;
     }
 }
