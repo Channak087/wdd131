@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phnom Penh - WDD131</title>
+    <meta name="description" content="WDD131 Assignment - Phnom Penh Weather and Data">
+    <meta name="author" content="Your Name">
+    <link rel="stylesheet" href="styles/place.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap" rel="stylesheet">
+    <script src="scripts/place.js" defer></script>
+</head>
+<body>
+    
+    <header>
+        <h1>Phnom Penh</h1>
+    </header>
+
+    <main>
+        <div class="hero">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/Drone_view_of_Koh_Pich_and_downtown_Phnom_Penh.jpg" alt="Phnom Penh City Scenery" class="hero-img">
+            
+            <div class="card data-card">
+                <div class="card-header">
+                    <h3>Data</h3>
+                </div>
+                <div class="card-content">
+                    <p><strong>Area:</strong> 679 sq km</p>
+                    <p><strong>Population:</strong> 2.3 Million</p>
+                    <p><strong>Capital:</strong> Phnom Penh</p>
+                    <p><strong>Languages:</strong> Khmer, English</p>
+                    <p><strong>Currency:</strong> Riel (KHR)</p>
+                    <p><strong>Time Zone:</strong> UTC+7</p>
+                    <p><strong>Calling Code:</strong> +855</p>
+                    <p><strong>Internet TLD:</strong> .kh</p>
+                </div>
+            </div>
+
+            <div class="card weather-card">
+                <div class="card-header">
+                    <h3>Weather <span class="weather-icon">☁️</span></h3>
+                </div>
+                <div class="card-content">
+                    <p><strong>Temperature:</strong> <span id="temperature">32</span>&deg;C</p>
+                    <p><strong>Conditions:</strong> Partly Cloudy</p>
+                    <p><strong>Wind:</strong> <span id="windspeed">5</span> km/h</p>
+                    <p><strong>Wind Chill:</strong> <span id="windchill">7.7</span>&deg;C</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy;<span id="year"></span> 🌸 Kong Channak 🌸 Phnom Penh</p>
+        <p>Last Modification: <span id="lastModified"></span></p>
+    </footer>
+
+</body>
+</html>
