@@ -1,26 +1,33 @@
+/* Larger Views ******************************/
 @media (min-width: 750px) {
     header {
+        display: grid;
+        grid-template-columns: auto 1fr 2fr;
+        font-size: 16px;
+    }
+
+    .navigation {
+        grid-column: 3;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        font-size: 1.5rem;
-    }
-
-    .nav {
-        justify-content: flex-end;
         flex-direction: row;
-
     }
 
-    .nav a {
+    .navigation a {
         display: block;
         padding: 1rem;
         flex: 1 1 100%;
     }
-
+    /* Hide hamburger button */
     #menu {
-        display: none; /* Hide hamburger button */
+        display: none;
+        
     }
 
-    
+    main {
+        margin: 1rem auto;
+        max-width: 930px;
+    }
+
 }
